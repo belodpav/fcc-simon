@@ -1,0 +1,18 @@
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+button {
+    padding: 15px;
+    margin: 10px 5px;
+}
+
+#app-counter {
+    height: 50px;
+    background-color: #f2f2f2;
+    font-size: 22px;
+    line-height: 50px;
+    padding: 0 15px;
+}
