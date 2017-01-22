@@ -128,7 +128,12 @@ btnStrict.onclick = function() {
     if (newSimon.getState() === 0) {
         return;
     }
-    newSimon.setMode(1);
+    if (newSimon.getMode() === 0) {
+        newSimon.setMode(1);
+    } else {
+        newSimon.setMode(0);    
+    }
+    
 }
 document.onclick = function(element) {
     if (newSimon.getState() === 0 || newSimon.getListenerState() === 0) {
