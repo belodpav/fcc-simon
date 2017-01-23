@@ -60,6 +60,7 @@ var btnOff = document.getElementById("tougle-off"),
     btnStart = document.getElementById("btn-start"),
     btnStrict = document.getElementById("btn-strict"),
     gameBtnList = document.getElementsByClassName("game-button"),
+    gameBtnBox = document.getElementById("app-game-buttons"),
     counterDisplay = document.getElementById("app-counter"),
     bodyElement = document.getElementsByTagName("body")[0];
     
@@ -135,20 +136,19 @@ btnStrict.onclick = function() {
     }
     
 }
-document.onclick = function(element) {
+gameBtnBox.onclick = function(element) {
     if (newSimon.getState() === 0 || newSimon.getListenerState() === 0) {
         return;
     }
-    var target = element.target,
-        gameBtn = target.closest(".game-button"),
+    var gameBtn = element.target,
         stepsList = [];
-    if (!gameBtn) {
+    if (gameBtn.className !== "game-button") {
         return;
     }
     
     value = parseInt(gameBtn.getAttribute("id"));
     stepsList = newSimon.getStepsList();
-    console.log(stepsList[newSimon.getUserStepsCount()], "  btn value",value);
+    console.log(stepsList[newSimon.getUserStepsCount()], " btn value",value);
     if (stepsList[newSimon.getUserStepsCount()] === value) {
         console.log("Right!");
         newSimon.incUserStepsCount();
