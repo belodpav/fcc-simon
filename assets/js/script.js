@@ -58,11 +58,14 @@ function simonGame (state, mode) {
 var btnOff = document.getElementById("tougle-off"),
     btnOn = document.getElementById("tougle-on"),
     btnStart = document.getElementById("btn-start"),
+    btnStartIcon = document.getElementById("start-icon-circle"),
     btnStrict = document.getElementById("btn-strict"),
+    btnStrictIcon = document.getElementById("strict-icon-circle"),
     gameBtnList = document.getElementsByClassName("game-button"),
     gameBtnBox = document.getElementById("app-game-buttons"),
     counterDisplay = document.getElementById("app-counter"),
-    bodyElement = document.getElementsByTagName("body")[0];
+    bodyElement = document.getElementsByTagName("body")[0],
+    sounds = document.getElementsByClassName("sound-btn");
     
 
 var newSimon = new simonGame(0, -1);
@@ -74,23 +77,43 @@ function showStepsList(curNum, stepsList, btnList) {
     var curBtn = stepsList[curNum];
     switch (curBtn) {
             case 1:
-                btnList[0].style.backgroundColor = "#000";
+                //btnList[0].style.backgroundColor = "#000";
+                sounds[0].play();
+                btnList[0].style.boxShadow = "none";
+                btnList[0].style.top = "5px";
                 break;
             case 2:
-                btnList[1].style.backgroundColor = "#000";
+                //btnList[1].style.backgroundColor = "#000";
+                sounds[1].play();
+                btnList[1].style.boxShadow = "none";
+                btnList[1].style.top = "5px";
                 break;
             case 3:
-                btnList[2].style.backgroundColor = "#000";
+                //btnList[2].style.backgroundColor = "#000";
+                sounds[2].play();
+                btnList[2].style.boxShadow = "none";
+                btnList[2].style.top = "5px";
                 break;
             case 4:
-                btnList[3].style.backgroundColor = "#000";
+                //btnList[3].style.backgroundColor = "#000";
+                sounds[3].play();
+                btnList[3].style.boxShadow = "none";
+                btnList[3].style.top = "5px";
                 break;
         }
     setTimeout(function () {
-        btnList[0].style.backgroundColor = "#f2f2f2";
-        btnList[1].style.backgroundColor = "#f2f2f2";
-        btnList[2].style.backgroundColor = "#f2f2f2";
-        btnList[3].style.backgroundColor = "#f2f2f2"; 
+        btnList[0].style.backgroundColor = "#f58036";
+        btnList[0].style.boxShadow = "0px 5px 0px 0px rgba(184, 74, 7, 0.75)";
+        btnList[0].style.top = "";
+        btnList[1].style.backgroundColor = "#009d22";
+        btnList[1].style.boxShadow = "0px 5px 0px 0px rgba(0, 89, 34, 0.75)";
+        btnList[1].style.top = "";
+        btnList[2].style.backgroundColor = "#ffd715";
+        btnList[2].style.boxShadow = "0px 5px 0px 0px rgba(255, 142, 24, 0.75)";
+        btnList[2].style.top = "";
+        btnList[3].style.backgroundColor = "#73183f"; 
+        btnList[3].style.boxShadow = "0px 5px 0px 0px rgba(68, 0, 41, 0.98)";
+        btnList[3].style.top = "";
     },800); 
     
     
@@ -111,17 +134,30 @@ function gameLoop(game, btnList) {
 //console.log(newSimon.listenerState);
 btnOff.onclick = function() {
     newSimon.setState(0);
+    btnOn.className = '';
+    btnOff.className = 'active';
 }
 btnOn.onclick = function() {
     counterDisplay.textContent = "___";
     newSimon.initGame();
     newSimon.setState(1);
+    btnOn.className = 'active';
+    btnOff.className = '';
 }
 btnStart.onclick = function() {
     if (newSimon.getState() === 0) {
         return;
     }
-    newSimon.setMode(0);
+    
+    if (newSimon.getMode() !== 1) {   
+        newSimon.initGame();
+        newSimon.setMode(0);
+    } else {
+        newSimon.initGame();
+        newSimon.setMode(1);    
+    }
+    
+    counterDisplay.textContent = "1";
     gameLoop(newSimon, gameBtnList);
     
 }
@@ -131,8 +167,10 @@ btnStrict.onclick = function() {
     }
     if (newSimon.getMode() === 0) {
         newSimon.setMode(1);
+        btnStrictIcon.className = "icon-circle circle-active";
     } else {
-        newSimon.setMode(0);    
+        newSimon.setMode(0);
+        btnStrictIcon.className = "icon-circle circle-unactive";
     }
     
 }
@@ -149,6 +187,53 @@ gameBtnBox.onclick = function(element) {
     value = parseInt(gameBtn.getAttribute("id"));
     stepsList = newSimon.getStepsList();
     console.log(stepsList[newSimon.getUserStepsCount()], " btn value",value);
+    // ========================================
+    
+    switch (value) {
+            case 1:
+                //btnList[0].style.backgroundColor = "#000";
+                sounds[0].play();
+                gameBtnList[0].style.boxShadow = "none";
+                gameBtnList[0].style.top = "5px";
+                break;
+            case 2:
+                //btnList[1].style.backgroundColor = "#000";
+                sounds[1].play();
+                gameBtnList[1].style.boxShadow = "none";
+                gameBtnList[1].style.top = "5px";
+                break;
+            case 3:
+                //btnList[2].style.backgroundColor = "#000";
+                sounds[2].play();
+                gameBtnList[2].style.boxShadow = "none";
+                gameBtnList[2].style.top = "5px";
+                break;
+            case 4:
+                //btnList[3].style.backgroundColor = "#000";
+                sounds[3].play();
+                gameBtnList[3].style.boxShadow = "none";
+                gameBtnList[3].style.top = "5px";
+                break;
+        }
+    setTimeout(function () {
+        gameBtnList[0].style.backgroundColor = "#f58036";
+        gameBtnList[0].style.boxShadow = "0px 5px 0px 0px rgba(184, 74, 7, 0.75)";
+        gameBtnList[0].style.top = "";
+        gameBtnList[1].style.backgroundColor = "#009d22";
+        gameBtnList[1].style.boxShadow = "0px 5px 0px 0px rgba(0, 89, 34, 0.75)";
+        gameBtnList[1].style.top = "";
+        gameBtnList[2].style.backgroundColor = "#ffd715";
+        gameBtnList[2].style.boxShadow = "0px 5px 0px 0px rgba(255, 142, 24, 0.75)";
+        gameBtnList[2].style.top = "";
+        gameBtnList[3].style.backgroundColor = "#73183f"; 
+        gameBtnList[3].style.boxShadow = "0px 5px 0px 0px rgba(68, 0, 41, 0.98)";
+        gameBtnList[3].style.top = "";
+    },800); 
+    
+    //=============================
+    
+    
+    setTimeout(function() {
     if (stepsList[newSimon.getUserStepsCount()] === value) {
         console.log("Right!");
         newSimon.incUserStepsCount();
@@ -156,14 +241,16 @@ gameBtnBox.onclick = function(element) {
         // if button was wrong
         bodyElement.style.backgroundColor = "#f00";
         setTimeout(function() {
-            bodyElement.style.backgroundColor = "#fff";    
+            bodyElement.style.backgroundColor = "#d7e3fd";    
         }, 1000);
         
         setTimeout(function() {
             if (newSimon.getMode() === 1) {
                newSimon.initGame();
+               newSimon.setMode(1);
                newSimon.setState(1);
-               counterDisplay.textContent = "0";
+               counterDisplay.textContent = "1";
+               gameLoop(newSimon, gameBtnList);
                return;
             }
 
@@ -175,12 +262,22 @@ gameBtnBox.onclick = function(element) {
     console.log(newSimon.getUserStepsCount()," ***** ",newSimon.getStepsCount());
     if (newSimon.getUserStepsCount() >= newSimon.getStepsCount()) {
         newSimon.removeUserStepsCount();
-        counterDisplay.textContent = newSimon.getStepsCount();
-        if (newSimon.getStepsCount() === 5) { // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!==== change 5 to 20 === !!!!!!!!!!!!!!
+        counterDisplay.textContent = newSimon.getStepsCount() + 1;
+        if (newSimon.getStepsCount() === 3) { // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!==== change 5 to 20 === !!!!!!!!!!!!!!
             // Winner functionality!!!
-            counterDisplay.textContent = "You are WINNER!!!";
+            alert("You are WINNER!!!");
             // Stop Game
+            if (newSimon.getMode !== 1) {   
+            counterDisplay.textContent = "0";
+            newSimon.initGame();
+            newSimon.setMode(0);
+            } else {
+            newSimon.initGame();
+            newSimon.setMode(1);    
+            }
+
         }
         gameLoop(newSimon, gameBtnList);
     }
+    }, 1000);
 }

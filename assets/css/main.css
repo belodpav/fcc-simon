@@ -1,18 +1,143 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700');
+
 *,
 *:before,
 *:after {
     box-sizing: border-box;
 }
 
+/* Basic */
+body {
+    font: 300 16px/24px 'Lato', sans-serif;
+    text-align: center;
+    background-color: #d7e3fd;
+    padding: 0;
+    margin: 0;
+}
+.app-heading {
+    font-size: 60px;
+    font-weight: 300;
+    margin: 60px 0 60px;
+}
 button {
     padding: 15px;
-    margin: 10px 5px;
+    margin: 0 5px;
+    background-color: #fff;
+    cursor: pointer;
 }
-
+.game-button {
+    height: 200px;
+    width: 120px;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Lato', sans-serif;
+    font-size: 70px;
+    font-weight: 300;
+    position: relative;
+    color: #fff;
+    margin-top: -5px;
+}
+[id='1'] {
+    background-color: #f58036;
+    box-shadow: 0px 5px 0px 0px rgba(184, 74, 7, 0.75);
+}
+[id='2'] {
+    background-color: #009d22;
+    box-shadow: 0px 5px 0px 0px rgba(0, 89, 34, 0.75);
+}
+[id='3'] {
+    background-color: #ffd715;
+    box-shadow: 0px 5px 0px 0px rgba(255, 142, 24, 0.75);
+    color: #000;
+}
+[id='4'] {
+    background-color: #73183f;
+    box-shadow: 0px 5px 0px 0px rgba(68, 0, 41, 0.98);
+}
 #app-counter {
     height: 50px;
-    background-color: #f2f2f2;
+    width: 120px;
+    border-radius: 4px;
+    background-color: #fff;
     font-size: 22px;
     line-height: 50px;
     padding: 0 15px;
+    text-align: right;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 30px;
+}
+#btn-start,
+#btn-strict {
+    height: 40px;
+    padding: 0 20px;
+    margin: 0;
+    margin-top: 5px;
+    line-height: 40px;
+    background-color: #2579bf;
+    border-radius: 4px;
+    outline: none;
+    border: none;
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 10px;
+}
+.tougle-on-off {
+    width: 80px;
+    height: 40px;
+    border-radius: 4px;
+    background-color: #fff;
+    display: inline-block;
+    margin: 0 10px;
+    vertical-align: top;
+}
+.tougle-on-off button {
+    margin: 5px;
+    float: left;
+    height: 30px;
+    width: 30px;
+    border-radius: 4px;
+    outline: none;
+    border: none;
+    
+    
+}
+.active {
+    background-color: #2579bf;
+}
+.tougle {
+    display: inline-block;
+    margin: 5px 50px 5px 0;
+}
+.tougle span {
+    vertical-align: top;
+    display: inline-block;
+    line-height: 40px;
+    
+}
+.icon-circle {
+    display: inline-block;
+    height: 14px;
+    width: 14px;
+    border-radius: 100%;
+    line-height: 40px;
+    margin-right: 10px;
+}
+.circle-active {
+    background-color: #44b759;
+}
+.circle-unactive {
+    background-color: #f05350;
+}
+.app-sets {
+    margin-bottom: 60px;
+}
+#app-game-buttons {
+    height: 200px;
+    background-color: #bcd3f4;
 }
