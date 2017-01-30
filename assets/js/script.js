@@ -267,16 +267,18 @@ gameBtnBox.onclick = function(element) {
             // Winner functionality!!!
             alert("You are WINNER!!!");
             // Stop Game
-            if (newSimon.getMode !== 1) {   
-            counterDisplay.textContent = "0";
-            newSimon.initGame();
-            newSimon.setMode(0);
+            counterDisplay.textContent = "1";
+            if (newSimon.getMode() !== 1) {   
+                
+                newSimon.initGame();
+                newSimon.setMode(0);
             } else {
-            newSimon.initGame();
-            newSimon.setMode(1);    
+                newSimon.initGame();
+                newSimon.setMode(1);    
             }
 
         }
+        
         gameLoop(newSimon, gameBtnList);
     }
     }, 1000);
